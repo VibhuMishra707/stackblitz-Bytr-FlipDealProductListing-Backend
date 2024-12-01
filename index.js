@@ -243,7 +243,7 @@ app.get('/', (req, res) => {
 // Endpoint - 1 (Get the products sorted by popularity)
 
 function productSortPopularity(product1, product2) {
-  return product1.rating - product2.rating;
+  return product2.rating - product1.rating;
 }
 
 app.get('/products/sort/popularity', (req, res) => {
@@ -313,7 +313,7 @@ app.get('/products/filter/rom', (req, res) => {
 // Endpoint - 6 (Filter the products based on the “Brand” option)
 
 function productFilterByBrand(product, brand) {
-  return product.brand === brand;
+  return product.brand.toLowerCase() === brand.toLowerCase();
 }
 
 app.get('/products/filter/brand', (req, res) => {
@@ -329,7 +329,7 @@ app.get('/products/filter/brand', (req, res) => {
 // Endpoint - 7 (Filter the products based on the “OS” option)
 
 function productFilterByOS(product, os) {
-  return product.os === os;
+  return product.os.toLowerCase() === os.toLowerCase();
 }
 
 app.get('/products/filter/os', (req, res) => {
